@@ -8,12 +8,14 @@ const API_URL = 'http://localhost:3000'
 function App() {
   const [dataMedicaments, setDataMedicaments] = useState<Medicament[]>([])
   const [listMedicaments, setListMedicaments] = useState<Medicament[]>([])
-  // console.log(dataMedicaments[0])
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${API_URL}/data`);
       const data = await response.json();
+      console.log(data.map((medicament: Medicament) => medicament.published_at));
       setDataMedicaments(data);
+      setListMedicaments(data);
     };
     fetchData();
   }, []);

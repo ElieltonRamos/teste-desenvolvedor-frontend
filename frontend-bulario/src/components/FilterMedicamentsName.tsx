@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Medicament } from "../types/medicament";
 import filterMedicaments from "../utils/filterMedicaments";
+import sortedMedicaments from "../utils/sortedMedicaments";
 
 type PropFilterMedicamentsName = {
   dataMedicaments: Medicament[];
@@ -11,11 +12,11 @@ type PropFilterMedicamentsName = {
 function FilterMedicamentsName({ dataMedicaments, setMedicaments }: PropFilterMedicamentsName) {
   const [searchCompany, setSearchCompany] = useState('');
   const [searchName, setSearchName] = useState('');
-  console.log(searchCompany, searchName);
 
   useEffect(() => {
     const filteredData = filterMedicaments(dataMedicaments, searchName, searchCompany);
-    setMedicaments(filteredData);
+    const ordenedMedicaments = sortedMedicaments(filteredData);
+    setMedicaments(ordenedMedicaments);
   }, [searchName, searchCompany]);
 
   return (
