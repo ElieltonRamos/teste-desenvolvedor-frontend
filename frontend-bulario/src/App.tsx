@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Main from "./pages/Main"
 import MedicamentDetail from "./pages/MedicamentDetail"
 
-const API_URL = 'http://localhost:3000'
+export const API_URL = 'http://localhost:3000'
 const ITENS_PAGE = 10
 
 function App() {
