@@ -7,15 +7,15 @@ const API_URL = 'http://localhost:3000'
 
 function App() {
   const [dataMedicaments, setDataMedicaments] = useState<Medicament[]>([])
-  const [listMedicaments, setListMedicaments] = useState<Medicament[]>([])
+  const [filteredMedicaments, setfilteredMedicaments] = useState<Medicament[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${API_URL}/data`);
       const data = await response.json();
-      console.log(data.map((medicament: Medicament) => medicament.published_at));
+      console.log(data.length);
       setDataMedicaments(data);
-      setListMedicaments(data);
+      setfilteredMedicaments(data);
     };
     fetchData();
   }, []);
@@ -29,11 +29,11 @@ function App() {
       <form>
         <FilterMedicamentsName
           dataMedicaments={dataMedicaments}
-          setMedicaments={setListMedicaments}
+          setMedicaments={setfilteredMedicaments}
         />
       </form>
       <h2>Resultados</h2>
-      <ListMedicaments listMedicaments={listMedicaments} />
+      <ListMedicaments listMedicaments={filteredMedicaments} itemsPerPage={10} />
     </main>
   )
 }
