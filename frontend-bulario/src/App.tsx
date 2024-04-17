@@ -5,6 +5,7 @@ import Main from "./pages/Main"
 import MedicamentDetail from "./pages/MedicamentDetail"
 
 const API_URL = 'http://localhost:3000'
+const ITENS_PAGE = 10
 
 function App() {
   const [dataMedicaments, setDataMedicaments] = useState<Medicament[]>([])
@@ -22,7 +23,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main dataMedicaments={dataMedicaments} setfilteredMedicaments={setfilteredMedicaments} filteredMedicaments={filteredMedicaments} itensPage={10} />} />
+        <Route
+          path="/"
+          element={<Main dataMedicaments={dataMedicaments}
+          setfilteredMedicaments={setfilteredMedicaments}
+          filteredMedicaments={filteredMedicaments}
+          itensPage={ITENS_PAGE}
+        />}
+      />
         <Route path="/medicament/:id" element={<MedicamentDetail />} />
       </Routes>
     </BrowserRouter>
