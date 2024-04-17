@@ -1,6 +1,6 @@
 [![](https://dotlib.com/theme/img/logos/logo.png)](https://www.dotlib.com)
 
-# Descrição da vaga de Desenvolvedor Frontend Jr..
+# Descrição da vaga de Desenvolvedor Frontend Jr.
 
 Buscamos profissionais que sejam apaixonados por desenvolvimento, inovação e novas tecnologias, para integrar nosso time em projetos baseados em Laravel, Node.js, React e React Native.
 
