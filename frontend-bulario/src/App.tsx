@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Medicament } from "./types/medicament"
-import ListMedicaments from "./components/ListMedicaments"
-import FilterMedicamentsName from "./components/FilterMedicamentsName"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Main from "./pages/Main"
+import MedicamentDetail from "./pages/MedicamentDetail"
 
 const API_URL = 'http://localhost:3000'
 
@@ -10,31 +11,21 @@ function App() {
   const [filteredMedicaments, setfilteredMedicaments] = useState<Medicament[]>([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${API_URL}/data`);
-      const data = await response.json();
-      console.log(data.length);
-      setDataMedicaments(data);
-      setfilteredMedicaments(data);
-    };
-    fetchData();
+    fetch(`${API_URL}/data`)
+      .then(response => response.json())
+      .then(data => {
+        setDataMedicaments(data);
+        setfilteredMedicaments(data);
+      })
   }, []);
 
   return (
-    <main>
-      <header>
-        <h1>Bulario DotLib</h1>
-      </header>
-      <h2>Busque um medicamento</h2>
-      <form>
-        <FilterMedicamentsName
-          dataMedicaments={dataMedicaments}
-          setMedicaments={setfilteredMedicaments}
-        />
-      </form>
-      <h2>Resultados</h2>
-      <ListMedicaments listMedicaments={filteredMedicaments} itemsPerPage={10} />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main dataMedicaments={dataMedicaments} setfilteredMedicaments={setfilteredMedicaments} filteredMedicaments={filteredMedicaments} itensPage={10} />} />
+        <Route path="/medicament/:id" element={<MedicamentDetail />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
