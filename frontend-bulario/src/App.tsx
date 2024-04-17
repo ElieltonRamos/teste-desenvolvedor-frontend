@@ -6,14 +6,14 @@ import FilterMedicamentsName from "./components/FilterMedicamentsName"
 const API_URL = 'http://localhost:3000'
 
 function App() {
+  const [dataMedicaments, setDataMedicaments] = useState<Medicament[]>([])
   const [listMedicaments, setListMedicaments] = useState<Medicament[]>([])
-  const [search, setSearch] = useState<string>('')
-
+  // console.log(dataMedicaments[0])
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${API_URL}/data`);
       const data = await response.json();
-      setListMedicaments(data);
+      setDataMedicaments(data);
     };
     fetchData();
   }, []);
@@ -23,17 +23,15 @@ function App() {
       <header>
         <h1>Bulario DotLib</h1>
       </header>
-      <section>
-        <h2>Busque um medicamento</h2>
-        <form>
-          <FilterMedicamentsName dataMedicaments={listMedicaments} setMedicaments={setListMedicaments}  search={search} setSearch={setSearch}/>
-          <button type="submit">Buscar</button>
-        </form>
-      </section>
-      <section>
-        <h2>Resultados</h2>
-        <ListMedicaments listMedicaments={listMedicaments} />
-      </section>
+      <h2>Busque um medicamento</h2>
+      <form>
+        <FilterMedicamentsName
+          dataMedicaments={dataMedicaments}
+          setMedicaments={setListMedicaments}
+        />
+      </form>
+      <h2>Resultados</h2>
+      <ListMedicaments listMedicaments={listMedicaments} />
     </main>
   )
 }
