@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react"
 import { Medicament } from "./types/medicament"
+import ListMedicaments from "./components/ListMedicaments"
+import FilterMedicamentsName from "./components/FilterMedicamentsName"
 
 const API_URL = 'http://localhost:3000'
 
 function App() {
   const [listMedicaments, setListMedicaments] = useState<Medicament[]>([])
-  console.log(listMedicaments)
+  const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
-    fetch(`${API_URL}/data`)
-      .then((response) => response.json())
-      .then((data) => setListMedicaments(data))
-  }, [])
+    const fetchData = async () => {
+      const response = await fetch(`${API_URL}/data`);
+      const data = await response.json();
+      setListMedicaments(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <main>
@@ -21,19 +26,13 @@ function App() {
       <section>
         <h2>Busque um medicamento</h2>
         <form>
-          <input type="text" placeholder="Nome do medicamento" />
+          <FilterMedicamentsName dataMedicaments={listMedicaments} setMedicaments={setListMedicaments}  search={search} setSearch={setSearch}/>
           <button type="submit">Buscar</button>
         </form>
       </section>
       <section>
         <h2>Resultados</h2>
-        <ul>
-          {listMedicaments.map((medicament) => (
-            <li key={medicament.id}>
-              <h3>{medicament.name}</h3>
-              <p>{medicament.company}</p>
-            </li>))}
-        </ul>
+        <ListMedicaments listMedicaments={listMedicaments} />
       </section>
     </main>
   )
