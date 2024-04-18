@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Medicament } from "../types/medicament";
 import filterMedicaments from "../utils/filterMedicaments";
 import sortedMedicaments from "../utils/sortedMedicaments";
+import InputSearch from "./inputSearch";
 
 type PropFilterMedicamentsName = {
   dataMedicaments: Medicament[];
@@ -21,18 +22,20 @@ function FilterMedicamentsName({ dataMedicaments, setMedicaments }: PropFilterMe
 
   return (
     <>
-      <h4>Busque pelo nome</h4>
-      <input
-        type="text"
-        placeholder="Procure o nome do Medicamento..."
+
+      <InputSearch
+        onChange={(e) => setSearchName(e.target.value)}
+        placeholder="Digite o nome..."
         value={searchName}
-        onChange={(e) => setSearchName(e.target.value)} />
-      <h4>Busque pelo laboratorio</h4>
-      <input
-        type="text"
-        placeholder="Procure o laboratorio do Medicamento..."
+        textLabel="Busque pelo nome"
+        />
+
+      <InputSearch
+        onChange={(e) => setSearchCompany(e.target.value)}
+        placeholder="Digite o laboratorio..."
         value={searchCompany}
-        onChange={(e) => setSearchCompany(e.target.value)} />
+        textLabel="Busque pelo laboratorio"/>
+        
     </>
   );
 }

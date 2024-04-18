@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Medicament } from "../types/medicament";
 
 interface Props {
@@ -6,13 +6,22 @@ interface Props {
 }
 
 function RenderMedicaments({ currentItems }: Props) {
+  const navigate = useNavigate()
+
   return currentItems.map((medicament) => {
-    return <li key={medicament.id}>
-      <Link to={`/medicament/${medicament.id}`}>
-        <p>{medicament.name}</p>
-        <p>{medicament.company}</p>
-      </Link>
-    </li>;
+    return (<div className="card">
+    <div className="medicamentContainer">
+    </div>
+
+    <div className="card-header">
+      <span>{medicament.name}<br /></span>
+      <span>{medicament.company}</span>
+    </div>
+
+    <div className="temp-scale">
+      <button onClick={() => navigate(`/data/${medicament.id}`)}>Ver Detalhes</button>
+    </div>
+  </div>);
   });
 }
 

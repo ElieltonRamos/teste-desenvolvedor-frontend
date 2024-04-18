@@ -8,6 +8,7 @@ interface Props {
   filteredMedicaments: Medicament[];
   itensPage: number;
 }
+
 function Main({ dataMedicaments, setfilteredMedicaments, filteredMedicaments, itensPage }: Props) {
   return (<main>
     <header>
@@ -15,7 +16,7 @@ function Main({ dataMedicaments, setfilteredMedicaments, filteredMedicaments, it
     </header>
     <section className="container">
       <div className="box">
-        <h2>Busque um medicamento</h2>
+        <h2 className="title">Busque um medicamento</h2>
         <div className="containerForms">
           <FilterMedicamentsName
             dataMedicaments={dataMedicaments}
@@ -24,7 +25,7 @@ function Main({ dataMedicaments, setfilteredMedicaments, filteredMedicaments, it
         </div>
       </div>
     </section>
-    <h2>Resultados</h2>
+    <h2 className="title">Resultados</h2>
     <ListMedicaments listMedicaments={filteredMedicaments} itemsPerPage={itensPage} />
   </main>
   )
