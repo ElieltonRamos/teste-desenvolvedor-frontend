@@ -28,7 +28,7 @@ function ListMedicaments({ listMedicaments, itemsPerPage }: Props) {
 
   return (
     <div>
-      <ul>
+      <ul className="listMedicaments">
         {<RenderMedicaments currentItems={currentItems} />}
       </ul>
       <ul>

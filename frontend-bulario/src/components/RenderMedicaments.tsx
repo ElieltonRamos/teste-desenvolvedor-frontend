@@ -19,7 +19,7 @@ function RenderMedicaments({ currentItems }: Props) {
     </div>
 
     <div className="temp-scale">
-      <button onClick={() => navigate(`/data/${medicament.id}`)}>Ver Detalhes</button>
+      <button onClick={() => navigate(`medicament/${medicament.id}`)}>Ver Detalhes</button>
     </div>
   </div>);
   });

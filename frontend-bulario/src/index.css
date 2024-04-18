@@ -116,10 +116,10 @@ header {
 }
 
 .card {
-  width: 350px;
-  height: 235px;
+  width: 20vw;
+  height: 30vh;
   position: relative;
-  padding: 25px;
+  padding: 15px;
   background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #FFF7B1 0%, rgba(255, 255, 255, 0) 71.88%)
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
     , #FFFFFF;
@@ -133,8 +133,6 @@ header {
 }
 
 .medicamentContainer {
-  width: 250px;
-  height: 250px;
   position: absolute;
   right: -35px;
   top: -50px;
@@ -142,25 +140,32 @@ header {
   align-items: center;
   justify-content: center;
   transform: scale(0.7);
+  gap: 50px;
 }
 
 .card-header {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  text-align: center;
 }
 
 .card-header span:first-child {
+  text-align: center;
+  align-items: center;
   word-break: break-all;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 90%;
   line-height: 135%;
   color: rgba(87, 77, 51, 0.66);
 }
 
 .card-header span:last-child {
+  margin-top: 5%;
+  align-items: center;
+  text-align: center;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 60%;
   line-height: 135%;
   color: rgba(87, 77, 51, 0.33);
 }
@@ -198,4 +203,19 @@ header {
 
 button:hover {
   transform: scale(1.05);
+}
+
+.listMedicaments {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 80vw;
+  max-height: 30vh;
+}
+
+.listMedicaments>* {
+  width: 95%;
+  height: auto;
 }
