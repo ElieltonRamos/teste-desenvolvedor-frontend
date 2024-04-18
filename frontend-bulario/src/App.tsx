@@ -5,7 +5,7 @@ import Main from "./pages/Main"
 import MedicamentDetail from "./pages/MedicamentDetail"
 
 export const API_URL = 'http://localhost:3000'
-const ITENS_PAGE = 10
+export const ITENS_PAGE = 10
 
 function App() {
   const [dataMedicaments, setDataMedicaments] = useState<Medicament[]>([])

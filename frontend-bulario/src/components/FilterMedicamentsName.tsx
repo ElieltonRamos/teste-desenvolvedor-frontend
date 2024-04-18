@@ -20,7 +20,7 @@ function FilterMedicamentsName({ dataMedicaments, setMedicaments }: PropFilterMe
   }, [searchName, searchCompany]);
 
   return (
-    <div>
+    <>
       <h4>Busque pelo nome</h4>
       <input
         type="text"
@@ -33,7 +33,7 @@ function FilterMedicamentsName({ dataMedicaments, setMedicaments }: PropFilterMe
         placeholder="Procure o laboratorio do Medicamento..."
         value={searchCompany}
         onChange={(e) => setSearchCompany(e.target.value)} />
-    </div>
+    </>
   );
 }
 
