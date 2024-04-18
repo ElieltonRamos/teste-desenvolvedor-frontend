@@ -2,10 +2,25 @@ import { useParams } from "react-router-dom";
 import { Medicament } from "../types/medicament";
 import { useEffect, useState } from "react";
 import { API_URL } from "../App";
+import JsFileDownloader from 'js-file-downloader';
 
 function MedicamentDetail() {
   const { id } = useParams();
   const [medicament, setMedicament] = useState<Medicament | null>(null);
+
+  const downloadFile = (url: string, fileName: string) => {
+    fetch(url, { mode: 'no-cors' })
+      .then(response => response.blob())
+      .then((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+        new JsFileDownloader({
+          url: blobUrl,
+          filename: fileName
+        })
+      })
+      .then(() => window.alert('Download concluído!'))
+      .catch(() => window.alert('Erro ao baixar o arquivo!'));
+  };
 
   useEffect(() => {
     fetch(`${API_URL}/data/${id}`)
@@ -35,6 +50,7 @@ function MedicamentDetail() {
             <p>Tipo: {element.type}</p>
             <p>Expediente: {element.expedient}</p>
             <a href={element.url} target="_blank" rel="noopener noreferrer">Ver Documento</a>
+            <button onClick={() => downloadFile(element.url, 'pdf_sample.pdf')}>Download</button>
           </li>
         ))}
       </ul>
