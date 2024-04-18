@@ -20,21 +20,20 @@ function ListMedicaments({ listMedicaments, itemsPerPage }: Props) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = listMedicaments.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const nextPage = Number(event.currentTarget.id);
+  const handleClick = (nextPage: number) => {
     setCurrentPage(nextPage);
   };
 
 
   return (
-    <div>
+    <>
       <ul className="listMedicaments">
         {<RenderMedicaments currentItems={currentItems} />}
       </ul>
       <ul>
         {<PageNumbers handleClick={handleClick} pageNumbers={pageNumbers} />}
       </ul>
-    </div>
+    </>
   );
 }
 
