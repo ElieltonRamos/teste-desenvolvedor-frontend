@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Medicament } from "../types/medicament";
 import { useEffect, useState } from "react";
 import { API_URL } from "../App";
@@ -7,6 +7,7 @@ import JsFileDownloader from 'js-file-downloader';
 function MedicamentDetail() {
   const { id } = useParams();
   const [medicament, setMedicament] = useState<Medicament | null>(null);
+  const navigate = useNavigate()
 
   const downloadFile = (url: string, fileName: string) => {
     fetch(url, { mode: 'no-cors' })
@@ -34,28 +35,41 @@ function MedicamentDetail() {
   }
 
   return (
-    <div>
-      <h1>Detalhes do Medicamento</h1>
-
-      <p>Nome: {medicament.name}</p>
-      <p>Laboratorio: {medicament.company}</p>
-      <p>Publicado em: {medicament.published_at}</p>
-      <p>Principios Ativos: {medicament.active_principles.map((e) => (
-        <span key={e.id}>{e.name}</span>
-      ))}
-      </p>
-      <ul>
-        {medicament.documents.map(element => (
-          <li key={element.id}>
-            <p>Tipo: {element.type}</p>
-            <p>Expediente: {element.expedient}</p>
-            <a href={element.url} target="_blank" rel="noopener noreferrer">Ver Documento</a>
-            <button onClick={() => downloadFile(element.url, 'pdf_sample.pdf')}>Download</button>
-          </li>
-        ))}
-      </ul>
-
-    </div>
+    <main>
+      <header>
+        <h1 className="title">Detalhes do Medicamento</h1>
+      </header>
+      <div className="containerDetail shadow">
+        <div className="contentBule">
+          <p className="detailTitle">{medicament.name}</p>
+          <p className="detailTitle">{medicament.company}</p>
+          <p className="message">Publicado em:
+            <br />
+            {medicament.published_at}
+          </p>
+          <p className="message">Principios Ativos:
+            {medicament.active_principles.map((e) => (<p key={e.id}>{e.name}</p>))}
+          </p>
+        </div>
+        <div className="contentBule">
+          <p className="detailTitle">Bulas Disponiveis:</p>
+          <div className="containerBula">{medicament.documents.map(element => (
+            <p key={element.id}>
+              <p className="message">Tipo:
+                <br />
+                {element.type}
+              </p>
+              <p className="message">Expediente: {element.expedient}</p>
+              <div className="actions">
+                <button className="history" onClick={() => downloadFile(element.url, 'pdf_sample.pdf')}>Download</button>
+                <a className="history" href={element.url} target="_blank" rel="noopener noreferrer">Visualizar</a>
+              </div>
+            </p>
+          ))}</div >
+        </div>
+      </div>
+      <button className="history return" onClick={() => navigate('/')}>Voltar para Pesquisa</button>
+    </main>
   )
 }
 
