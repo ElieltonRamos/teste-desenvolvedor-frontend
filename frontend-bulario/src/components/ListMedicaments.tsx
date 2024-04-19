@@ -31,7 +31,9 @@ function ListMedicaments({ listMedicaments, itemsPerPage }: Props) {
         {<RenderMedicaments currentItems={currentItems} />}
       </ul>
       <ul>
-        {<PageNumbers handleClick={handleClick} pageNumbers={pageNumbers} />}
+        {<PageNumbers
+        handleClick={handleClick}
+        pageNumbers={pageNumbers.length === 0 ? [1] : pageNumbers} />}
       </ul>
     </>
   );

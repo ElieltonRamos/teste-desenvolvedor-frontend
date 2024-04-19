@@ -26,8 +26,8 @@ function Main({ dataMedicaments, setfilteredMedicaments, filteredMedicaments, it
           </div>
         </div>
       </section>
-    <h2 className="title">Resultados</h2>
-    <ListMedicaments listMedicaments={filteredMedicaments} itemsPerPage={itensPage} />
+      <h2 className="title">Resultados</h2>
+      <ListMedicaments listMedicaments={filteredMedicaments} itemsPerPage={itensPage} />
     </main>
   </>
   )
