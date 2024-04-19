@@ -1,34 +1,35 @@
+import { useState } from "react";
+
 type Props = {
   pageNumbers: number[];
   handleClick: (nextpage: number) => void;
 }
 
 function PageNumbers({ pageNumbers, handleClick }: Props) {
-  return (
-    <div className="radio-input">
-      {pageNumbers.map(number => {
-        return (
-          <>
-            <label>
-              <input value="value-1" name="value-radio" id="value-1" type="radio" onChange={() => handleClick(number)} />
-              <span>{number}</span>
-            </label>
-          </>
-        );
-      })}
-      <span className="selection"></span>
-    </div>
-  )
-}
+  const [selectedPage, setSelectedPage] = useState(1);
 
-// return (
-//   <button
-//     key={number}
-//     id={`${number}`}
-//     onClick={handleClick}
-//   >
-//     {number}
-//   </button>
-// );
+  const handlePageChange = (pageNumber: number) => {
+    setSelectedPage(pageNumber);
+    handleClick(pageNumber);
+  };
+
+  return (
+    <div className="radio-input" style={{ '--page_count': pageNumbers.length, '--selected_page': selectedPage } as React.CSSProperties}>
+      {pageNumbers.map((page, index) => (
+        <label className={selectedPage === page ? 'azul' : ''} key={index}>
+          <input
+            type="radio"
+            name="page-radio"
+            value={page}
+            id={`value-${page}`}
+            checked={selectedPage === page}
+            onChange={() => handlePageChange(page)}
+          />
+          <span>{page}</span>
+        </label>
+      ))}
+    </div>
+  );
+}
 
 export default PageNumbers;

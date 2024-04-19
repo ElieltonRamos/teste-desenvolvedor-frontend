@@ -195,6 +195,7 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(5, 0.5fr);
   gap: 10px;
+  min-height: 250px;
 }
 
 .radio-input input {
@@ -203,7 +204,6 @@ button:hover {
 
 .radio-input {
   --container_width: 300px;
-  --quantityPages: 3;
   position: relative;
   display: flex;
   align-items: center;
@@ -216,7 +216,7 @@ button:hover {
 }
 
 .radio-input label {
-  width: 100%;
+  width: calc(100% / var(--page_count));
   padding: 10px;
   cursor: pointer;
   display: flex;
@@ -232,11 +232,15 @@ button:hover {
   display: none;
   position: absolute;
   height: 100%;
-  width: calc(var(--container_width) / var(--quantityPages));
+  width: calc(100% / var(--page_count));
   z-index: 0;
   left: 0;
   top: 0;
   transition: .15s ease;
+}
+
+.azul {
+  background-color: rgb(11 117 223);
 }
 
 .radio-input label:has(input:checked) {
@@ -248,18 +252,6 @@ button:hover {
   display: inline-block;
 }
 
-.radio-input label:nth-child(1):has(input:checked)~.selection {
-  transform: translateX(calc(var(--container_width) * 0/3));
-}
-
-.radio-input label:nth-child(2):has(input:checked)~.selection {
-  transform: translateX(calc(var(--container_width) * 1/3));
-}
-
-.radio-input label:nth-child(3):has(input:checked)~.selection {
-  transform: translateX(calc(var(--container_width) * 2/3));
-}
-
-.radio-input label:nth-child(4):has(input:checked)~.selection {
-  transform: translateX(calc(var(--container_width) * 3/3));
+.radio-input label:nth-child(n):has(input:checked)~.selection {
+  transform: translateX(calc((var(--container_width) / var(--page_count)) * (n - 1)));
 }
