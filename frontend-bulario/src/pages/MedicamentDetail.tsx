@@ -43,7 +43,7 @@ function MedicamentDetail() {
         </div>
         <div className="contentBule">
           <p className="detailTitle">Bulas Disponiveis:</p>
-          <RenderLeaflet leaflet={medicament.documents} />
+          <RenderLeaflet leaflets={medicament.documents} />
         </div>
       </div>
       <button className="history return" onClick={() => navigate('/')}>Voltar para Pesquisa</button>

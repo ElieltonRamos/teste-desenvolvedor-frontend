@@ -1,18 +1,18 @@
 import { Document } from "../types/medicament";
 import downloadFile from "../utils/downloadFile";
 
-function RenderLeaflet({leaflet}: {leaflet: Document[]}) {
+function RenderLeaflet({leaflets}: {leaflets: Document[]}) {
   return (
-    <div className="containerBula">{leaflet.map(element => (
-      <div key={element.id}>
+    <div className="containerBula">{leaflets.map(leaflet => (
+      <div key={leaflet.id}>
         <p className="message">Tipo:
           <br />
-          {element.type}
+          {leaflet.type}
         </p>
-        <p className="message">Expediente: {element.expedient}</p>
+        <p className="message">Expediente: {leaflet.expedient}</p>
         <div className="actions">
-          <button className="history" onClick={() => downloadFile(element.url, 'pdf_sample.pdf')}>Download</button>
-          <a className="history" href={element.url} target="_blank" rel="noopener noreferrer">Visualizar</a>
+          <button className="history" onClick={() => downloadFile(leaflet.url, 'pdf_sample.pdf')}>Download</button>
+          <a className="history" href={leaflet.url} target="_blank" rel="noopener noreferrer">Visualizar</a>
         </div>
       </div>
     ))}
