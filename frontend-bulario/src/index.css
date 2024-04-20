@@ -21,7 +21,7 @@ button {
   cursor: pointer;
 }
 
-body {
+body #root {
   background: url('../public/background.png') no-repeat;
   background-size: cover;
   background-position: center;
@@ -58,6 +58,7 @@ header {
 
 .container .box {
   display: flex;
+  max-width: 90vw;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
@@ -72,6 +73,7 @@ header {
 
 .containerForms {
   display: flex;
+  max-width: 100%;
 }
 
 .input {

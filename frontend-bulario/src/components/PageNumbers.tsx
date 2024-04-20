@@ -16,7 +16,7 @@ function PageNumbers({ pageNumbers, handleClick }: Props) {
   return (
     <div className="radio-input" style={{ '--page_count': pageNumbers.length, '--selected_page': selectedPage } as React.CSSProperties}>
       {pageNumbers.map((page, index) => (
-        <label className={selectedPage === page ? 'azul' : ''} key={index}>
+        <label className={selectedPage === page ? 'pageSelection' : ''} key={index}>
           <input
             type="radio"
             name="page-radio"

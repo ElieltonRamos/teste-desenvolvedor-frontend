@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Medicament } from "../types/medicament";
 import filterMedicaments from "../utils/filterMedicaments";
 import sortedMedicaments from "../utils/sortedMedicaments";
-import InputSearch from "./inputSearch";
+import InputSearch from "./InputSearch";
 
 type PropFilterMedicamentsName = {
   dataMedicaments: Medicament[];
