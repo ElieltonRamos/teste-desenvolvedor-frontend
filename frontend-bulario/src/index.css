@@ -137,6 +137,8 @@ header {
 }
 
 .listMedicaments {
+  max-width: 90vw;
+  overflow: scroll;
   margin-bottom: 10px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -250,7 +252,7 @@ button:hover {
   transition: .15s ease;
 }
 
-.azul {
+.pageSelection {
   background-color: rgb(11 117 223);
 }
 
