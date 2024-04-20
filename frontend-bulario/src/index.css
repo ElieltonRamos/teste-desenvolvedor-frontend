@@ -78,6 +78,7 @@ header {
 
 .input {
   max-width: 190px;
+  width: 95%;
   height: 44px;
   background-color: #05060f0a;
   border-radius: .5rem;
