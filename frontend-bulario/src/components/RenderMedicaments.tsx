@@ -9,7 +9,7 @@ function RenderMedicaments({ currentItems }: Props) {
   const navigate = useNavigate()
 
   return currentItems.map((medicament) => {
-    return (<div className="card">
+    return (<div key={medicament.id} className="card">
     <div className="medicamentContainer">
     </div>
 

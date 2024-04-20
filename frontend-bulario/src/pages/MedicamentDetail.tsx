@@ -2,7 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Medicament } from "../types/medicament";
 import { useEffect, useState } from "react";
 import { API_URL } from "../App";
-import downloadFile from "../utils/downloadFile";
+import alertError from "../utils/alertError";
+import RenderLeaflet from "../components/RenderLeaflet";
 
 function MedicamentDetail() {
   const { id } = useParams();
@@ -13,7 +14,10 @@ function MedicamentDetail() {
     fetch(`${API_URL}/data/${id}`)
       .then(response => response.json())
       .then(data => setMedicament(data))
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        alertError("Ocorreu um erro de conexão com o servidor.");
+      });
   }, [id]);
 
   if (!medicament) {
@@ -39,19 +43,7 @@ function MedicamentDetail() {
         </div>
         <div className="contentBule">
           <p className="detailTitle">Bulas Disponiveis:</p>
-          <div className="containerBula">{medicament.documents.map(element => (
-            <p key={element.id}>
-              <p className="message">Tipo:
-                <br />
-                {element.type}
-              </p>
-              <p className="message">Expediente: {element.expedient}</p>
-              <div className="actions">
-                <button className="history" onClick={() => downloadFile(element.url, 'pdf_sample.pdf')}>Download</button>
-                <a className="history" href={element.url} target="_blank" rel="noopener noreferrer">Visualizar</a>
-              </div>
-            </p>
-          ))}</div >
+          <RenderLeaflet leaflet={medicament.documents} />
         </div>
       </div>
       <button className="history return" onClick={() => navigate('/')}>Voltar para Pesquisa</button>
