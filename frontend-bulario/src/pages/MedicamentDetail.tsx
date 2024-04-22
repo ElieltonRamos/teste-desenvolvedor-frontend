@@ -37,9 +37,9 @@ function MedicamentDetail() {
             <br />
             {medicament.published_at}
           </p>
-          <p className="message">Principios Ativos:
+          <div className="message">Principios Ativos:
             {medicament.active_principles.map((e) => (<p key={e.id}>{e.name}</p>))}
-          </p>
+          </div>
         </div>
         <div className="contentBule">
           <p className="detailTitle">Bulas Disponiveis:</p>
