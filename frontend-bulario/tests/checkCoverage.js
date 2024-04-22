@@ -17,4 +17,4 @@ const expectedCovarage = 80;
 if (actualCovarage < expectedCovarage) {
   throw Error(`Coverage is ${actualCovarage}%, expected ${expectedCovarage}%`);
 }
-// assert.ok(actualCovarage >= expectedCovarage, `Coverage is ${actualCovarage}%, expected ${expectedCovarage}%`);
+console.log(`Coverage is ${actualCovarage}%`);

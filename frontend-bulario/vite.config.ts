@@ -10,7 +10,7 @@ export default defineConfig({
     setupFiles: ['./tests/setupTests.ts'],
     coverage: {
       provider: 'v8',
-      exclude: ['src/main.tsx', '.eslintrc.cjs', 'tests/mocks', 'tests/setupTests.ts'],
+      exclude: ['src/main.tsx', '.eslintrc.cjs', 'tests/mocks', 'tests/setupTests.ts', 'tests/checkCoverage.js'],
       reporter: ['json-summary', 'text']
     }
   }
