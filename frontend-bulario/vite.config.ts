@@ -8,6 +8,10 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     setupFiles: ['./tests/setupTests.ts'],
-    coverage: {provider: 'v8', exclude: ['src/main.tsx', '.eslintrc.cjs']}
-  },
+    coverage: {
+      provider: 'v8',
+      exclude: ['src/main.tsx', '.eslintrc.cjs', 'tests/mocks', 'tests/setupTests.ts'],
+      reporter: ['json-summary', 'text']
+    }
+  }
 })

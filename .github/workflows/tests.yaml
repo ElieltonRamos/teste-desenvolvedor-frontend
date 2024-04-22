@@ -1,21 +1,62 @@
-name: Testes
+name: Evaluate-Test-Frontend
 
 on: [push]
 
 jobs:
-  test:
+  linter:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout do Código
       uses: actions/checkout@v2
 
-    - name: Configurar Ambiente
+    - name: Configure-environment
       run: |
         cd frontend-bulario
         npm install
 
-    - name: Executar Testes
+    - name: Run-linter
+      run: |
+        cd frontend-bulario
+        npm run lint
+
+  tests:
+    needs: linter
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configure-environment
+      run: |
+        cd frontend-bulario
+        npm install
+
+    - name: Run-Tests
       run: |
         cd frontend-bulario
         npm test
+
+  coverage:
+    needs: tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configure-environment
+      run: |
+        cd frontend-bulario
+        npm install --loglevel=error
+
+    - name: Run-coverage
+      run: |
+        cd frontend-bulario
+        npm run test:coverage
+
+    - name: Check-coverage
+      run: |
+        cd frontend-bulario
+        npm run check:coverage
