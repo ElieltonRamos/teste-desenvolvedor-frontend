@@ -12,8 +12,10 @@ jobs:
 
     - name: Configurar Ambiente
       run: |
+        cd frontend-bulario
         npm install
 
     - name: Executar Testes
       run: |
+        cd frontend-bulario
         npm test
