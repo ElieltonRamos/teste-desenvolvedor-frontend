@@ -1,0 +1,37 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  evaluator-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configure-environment
+      run: |
+        cd frontend-bulario
+        npm install --loglevel=error
+
+    - name: Run-linter
+      run: |
+        cd frontend-bulario
+        npm run lint
+
+    - name: Run-Tests
+      run: |
+        cd frontend-bulario
+        npm test
+
+    - name: Run-coverage
+      run: |
+        cd frontend-bulario
+        npm run test:coverage
+
+    - name: Check-coverage
+      run: |
+        cd frontend-bulario
+        npm run check:coverage

@@ -2,11 +2,15 @@
   "name": "frontend-bulario",
   "private": true,
   "version": "0.0.0",
+  "engines": {
+    "node": ">=16"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "test": "vitest --no-watch",
     "test:coverage": "vitest run --coverage",
+    "check:coverage": "node tests/checkCoverage.js",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
