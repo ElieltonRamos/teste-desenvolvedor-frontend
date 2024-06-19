@@ -14,17 +14,21 @@ Este Projeto e a resolução de um desafio tecnico proposto pela [Dot Lib](https
 
 ## Tecnologias Utilizadas
 
-[Node JS](https://nodejs.org/en/docs)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt="Node" width="50px" height="30px"> [Node JS](https://nodejs.org/en/docs)
 
-[JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="Express" width="30px" height="30px"> [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
-[Docker](https://www.docker.com/get-started/)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="Typescript" width="30px" height="30px"> [TypeScript](https://www.typescriptlang.org/)
 
-[MySQL](https://www.mysql.com/)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="React" width="30px" height="30px"> [React](https://pt-br.reactjs.org/)
 
-[Express JS](https://expressjs.com/pt-br/)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/CSS.3.svg/1200px-CSS.3.svg.png" alt="CSS" width="30px" height="40px"> [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
-[Jest](https://jestjs.io/pt-BR/docs/getting-started)
+<img src="https://miro.medium.com/v2/da:true/resize:fit:1200/0*DyJgsUtNRuAkiwr5" width="30px" height="30px"> [Vitest](https://vitejs.dev/)
+
+<img src="https://pt.vitejs.dev/logo.svg" alt="vite" width="30px" height="30px"> [Vite](https://vitejs.dev/)
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEZWil3CMPi_oxEgTaf16tBnG9ZobYXWk06w&s" width="30px" height="30px"> [Jest](https://jestjs.io/pt-BR/docs/getting-started)
 
 ## Índice
 
@@ -39,11 +43,9 @@ Este Projeto e a resolução de um desafio tecnico proposto pela [Dot Lib](https
 
 Para desenvolver e executar esta aplicação, é necessário configurar um ambiente com as seguintes ferramentas:
 
-**Docker**: Utilizamos o Docker para empacotar e isolar a aplicação em contêineres, garantindo uma implantação consistente e fácil gerenciamento de dependências.
-
 **Node.js**: A aplicação é desenvolvida em Node.js, uma plataforma de tempo de execução JavaScript, e é necessária para executar o código.
 
-**Docker Compose**: O Docker Compose é uma ferramenta que simplifica a definição e o gerenciamento de serviços multi-contêiner em um único arquivo, ideal para orquestrar contêineres relacionados à aplicação.
+   - [Instalação do Node.js](https://nodejs.org/pt-br/download/)
 
 Certifique-se de instalar e configurar essas ferramentas em seu ambiente de desenvolvimento antes de iniciar o projeto.
 
@@ -52,37 +54,36 @@ Certifique-se de instalar e configurar essas ferramentas em seu ambiente de dese
 Clone este repositório:
 
    ```bash
-   git clone git@github.com:ElieltonRamos/project-api-talker-manager.git
+   git clone git@github.com:ElieltonRamos/teste-desenvolvedor-frontend.git
    ```
 
 Navegue até o diretório do projeto:
 
    ```bash
-cd project-api-talker-manager
+cd teste-desenvolvedor-frontend
    ```
 
-Instale as dependências:
+Inicie a API:
 
    ``` bash
-npm install
+   npx json-server api/dotlib.json -s ./api/public
    ```
 
-Inicie o docker compose:
+Em outro terminal Instale as dependências:
 
    ``` bash
-docker compose -up -d
+cd frontend-bulario && npm install
    ```
 
-Inicie a aplicação:
+Inicie o servidor de desenvolvimento:
 
    ``` bash
-docker exec -it talker_manager bash
-npm start
+npm run dev
    ```
 
 ## Testes
 
-O projeto conta com testes que verificam o funcionamento de cada rota da API, os testes foram escritos com JEST, lembrando que e necessario que o docker compose tenha sido executado para que os containers da apricação estejam online para que os testes funcionem.
+O projeto conta com testes que verificam o funcionamento do frontend, existem testes para verificar se a aplicação esta renderizando corretamente, se a busca por medicamentos esta funcionando, se a pagina de detalhes de um medicamento esta funcionando e se os links para download das bulas estão funcionando.
 
 Para executar os testes siga os seguintes passos:
 
@@ -91,78 +92,32 @@ Abra o terminal na raiz do projeto
 Execute o comando:
 
    ``` bash
-docker exec -it talker_manager bash
-   ```
-
-Agora, dentro do container do node, execute:
-
-   ``` bash
-npm test
+cd frontend-bulario && npm test
    ```
 
 Verifique a saida dos testes no seu terminal
 
 ## Uso
 
-Explore as rotas essenciais desta API, incluindo autenticação, operações de CRUD e funcionalidades de pesquisa para uma administração eficaz dos palestrantes.
+Para utilizar a aplicação, acesse o endereço [http://localhost:5173](http://localhost:5173) em seu navegador.
 
-1. **GET /talker**
-   - Retornar lista de palestrantes.
-   - Se não houver palestrantes, retornar array vazio.
-
-2. **GET /talker/:id**
-   - Retornar palestrante com base no ID.
-   - Retornar 404 se o palestrante não existir.
-
-3. **POST /login**
-   - Retornar token aleatório de 16 caracteres.
-   
-4. **Validações para /login**
-   - Validar campos e retornar 400 com mensagem de erro, em caso de dados inválidos.
-
-5. **POST /talker**
-   - Criar novo palestrante.
-
-6. **PUT /talker/:id**
-   - Atualizar informações de um palestrante.
-
-7. **DELETE /talker/:id**
-   - Excluir um palestrante.
-
-8. **GET /talker/search?q=searchTerm**
-   - Implementar pesquisa com base em um termo de consulta.
-
-9. **GET /talker/search?rate=rateNumber**
-   - Implementar pesquisa por classificação.
-
-10. **GET /talker/search?date=watchedDate**
-    - Implementar pesquisa por data de visualização.
-
-11. **PATCH /talker/rate/:id**
-    - Atualizar a classificação de um palestrante.
-
-12. **GET /talker/db**
-    - Utilizar um banco de dados MySQL para listar palestrantes.
+A aplicação exibe uma lista de medicamentos, com opções de pesquisa por nome e laboratório. Clique em um medicamento para ver detalhes e links para download das bulas.
+A aplicação também conta com um botão de voltar para a pagina inicial.
+A aplicação é responsiva e se adapta a diferentes tamanhos de tela.
+A aplicação conta com testes que verificam o funcionamento do frontend.
 
 ## Estrutura do Projeto
 
 A seguir esta explicada a estrutura de pastas do projeto
 
 project-api-talker-manager/ : A pasta raiz do projeto.<br>
-├── node_modules/ : Contém as dependências da aplicação.<br>
-├── tests/ : Contém os testes do projeto.<br>
-├── src/ : O diretório principal do código-fonte da aplicação, onde estão localizados os middlewares, modelos de dados e definições das rotas da API.<br>
-│   ├── middlewares/<br>
-│   ├── models/<br>
-│   ├── routes/<br>
-├── index.js : O arquivo principal que inicia o servidor e configura as rotas da API.<br>
-├── talker.json : Pode conter dados iniciais ou de exemplo para palestrantes.<br>
-├── package.json : Descreve as dependências e configurações do projeto.<br>
-├── README.md : A documentação do projeto.<br>
-├── docker-compose.yml : Utilizado para configurar e executar a aplicação em contêineres Docker.<br>
-├── DockerFile : Contém instruções para a criação de uma imagem Docker para a aplicação.<br>
-├── Jest.config.js : Configurações para testes com o framework Jest.<br>
-├── seed.sql : Um arquivo SQL usado para preencher o banco de dados com dados iniciais.<br>
+├── api/ : Pasta com os arquivos da API.<br>
+│   ├── public/ : Pasta com os arquivos estáticos da API.<br>
+│   ├── dotlin.json : Arquivo com os dados dos medicamentos.<br>
+├── frontend-bulario/ : Pasta com os arquivos do frontend.<br>
+├── public/ : Pasta imagens do readme.<br>
+├── README.md : Arquivo com a documentação do projeto.<br>
+├── .github/ : Pasta com arquivos de configuração do GitHub.<br>
 
 ## Contato
 
@@ -170,10 +125,6 @@ Elielton Ramos
 
 [![Envie-me um e-mail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:elieltonramos14@gmail.com)
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elielton-ramos/)
-
-## Contribuição
-
-Este projeto foi desenvolvido durante meu curso na [Trybe](https://www.betrybe.com/) com base no projeto 'Talker Manager'. A Trybe é uma escola de programação que tem compromisso com o sucesso profissional. O projeto 'Talker Manager' é parte do módulo de Back-End e envolve a criação de uma API com Express, Node, Docker e MySQL.
 
 ## Licença
 
@@ -183,42 +134,4 @@ Este projeto é de código aberto e está disponível para toda a comunidade. Fi
 
 ## Agradecimentos
 
-Sou grato à [Trybe](https://www.betrybe.com/) por proporcionar esse desafio enriquecedor e pela oportunidade de aprimorar minhas habilidades como desenvolvedor. Estou empolgado para aplicar os conhecimentos adquiridos em projetos futuros e continuar minha jornada de desenvolvedor web.
-
-
-
-
-
-
-
-[![](https://dotlib.com/theme/img/logos/logo.png)](https://www.dotlib.com)
-
-# Descrição da vaga de Desenvolvedor Frontend Jr.
-
-Buscamos profissionais que sejam apaixonados por desenvolvimento, inovação e novas tecnologias, para integrar nosso time em projetos baseados em Laravel, Node.js, React e React Native.
-
-[Oportunidades Dotlib](https://github.com/Dotlib-BR/oportunidades)
-
-## Requisitos
-
-### Obrigatórios:
-
-- Experiência em desenvolvimento de sites em React
-- Consumo de APIs RESTful
-- SASS e Flexbox
-- API Contexts e Hooks
-- Controle de versões (GIT)
-
-### Bônus:
-
-- Conhecimentos em Docker
-- Conhecimentos em Typescript
-- Conhecimentos em Node.js
-- Conhecimentos em testes automatizados com Cypress
-- Experiência em metodologias ágeis (Scrum/Kanban)
-
-## Como se candidatar
-
-Para se candidatar, basta acessar a url e realizar o teste para a vaga:
-
-- [Teste para Desenvolvedor Frontend Jr.](teste-frontend.md)
+Agradeço a [Dot Lib](https://www.dotlib.com/) pela oportunidade de participar do processo seletivo e desenvolver este projeto.
